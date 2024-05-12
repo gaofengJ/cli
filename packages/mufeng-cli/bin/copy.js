@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const copydir = require('copy-dir');
+const Mustache = require('mustache');
 
 /**
  * 创建目录
@@ -47,5 +48,14 @@ const copyDir = (from, to, options) => {
  */
 const checkMkdirExists = (dir) => fs.existsSync(dir);
 
+/**
+ * 读取模版中内容并返回
+ */
+const readTemplate = (dir, data = {}) => {
+  const str = fs.readFileSync(dir, { encoding: 'utf8' });
+  return Mustache.render(str, data);
+};
+
 exports.copyDir = copyDir;
 exports.checkMkdirExists = checkMkdirExists;
+exports.readTemplate = readTemplate;
