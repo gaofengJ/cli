@@ -49,8 +49,8 @@ const inquirerPrompt = async (argv) => {
         },
       ]);
       return {
-        answers,
-        answers1,
+        ...answers,
+        ...answers1,
       };
     }
     if (frame === 'vue') {
@@ -63,8 +63,8 @@ const inquirerPrompt = async (argv) => {
         },
       ]);
       return {
-        answers,
-        answers2,
+        ...answers,
+        ...answers2,
       };
     }
   } catch (e) {
