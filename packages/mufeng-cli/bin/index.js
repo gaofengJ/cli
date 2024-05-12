@@ -16,18 +16,22 @@ const cliInit = () => {
       type: 'string',
     }),
     async (argv) => {
-      const answers = await inquirerPrompt(argv);
-      const { name, frame } = answers;
-      const isMkdirExists = checkMkdirExists(
-        path.resolve(process.cwd(), `./${name}`),
-      );
-      if (isMkdirExists) {
-        console.log(`${name}文件夹已经存在`);
-      } else {
-        copyDir(
-          path.resolve(__dirname, `../template/${frame}`),
+      try {
+        const answers = await inquirerPrompt(argv);
+        const { name, frame } = answers;
+        const isMkdirExists = checkMkdirExists(
           path.resolve(process.cwd(), `./${name}`),
         );
+        if (isMkdirExists) {
+          console.log(`${name}文件夹已经存在`);
+        } else {
+          copyDir(
+            path.resolve(__dirname, `../template/${frame}`),
+            path.resolve(process.cwd(), `./${name}`),
+          );
+        }
+      } catch (e) {
+        console.error('e', e);
       }
     },
   ).argv;
