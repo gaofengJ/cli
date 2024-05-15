@@ -18,7 +18,7 @@ const cliInit = () => {
     async (argv) => {
       try {
         const answers = await inquirerPrompt(argv);
-        const { name, frame } = answers;
+        const { name, type } = answers;
         const isMkdirExists = checkMkdirExists(
           path.resolve(process.cwd(), `./${name}`),
         );
@@ -26,7 +26,7 @@ const cliInit = () => {
           console.log(`${name}文件夹已经存在`);
         } else {
           copyDir(
-            path.resolve(__dirname, `../template/${frame}`),
+            path.resolve(__dirname, `../template/${type}`),
             path.resolve(process.cwd(), `./${name}`),
           );
         }
