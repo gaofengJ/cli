@@ -24,5 +24,5 @@ features:
 - title: feature3
   details: feature3 details
 
-footer: MIT Licensed | Copyright © 2020-present mufeng
+footer: MIT Licensed | Copyright © 2020-present author
 ---
